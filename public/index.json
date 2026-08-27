@@ -1,0 +1,16 @@
+{
+  "name": "MoeTruyen Source",
+  "sources": [
+    {
+      "id": "moetruyen",
+      "name": "Mòe Truyện",
+      "version": 1,
+      "iconURL": "https://raw.githubusercontent.com/Auzema/aidoku-moetruyen/master/public/icon.png",
+      "downloadURL": "https://raw.githubusercontent.com/Auzema/aidoku-moetruyen/master/public/moetruyen-v1.aix",
+      "languages": ["vi"],
+      "contentRating": 0,
+      "baseURL": "https://truyen.moe",
+      "minAppVersion": "0.7.1"
+    }
+  ]
+}
