@@ -1,0 +1,48 @@
+name: Deploy Aidoku Source
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Build WASM
+        run: cargo build --release --target wasm32-unknown-unknown
+
+      - name: Generate Source List
+        run: |
+          mkdir public
+          cp target/wasm32-unknown-unknown/release/moetruyen.wasm public/
+          cp res/icon.png public/
+          cat << 'JSON' > public/source.json
+          [
+            {
+              "id": "moetruyen",
+              "name": "Mòe Truyện",
+              "author": "Auzema",
+              "version": "0.1.0",
+              "language": "vi",
+              "url": "https://auzema.github.io/aidoku-moetruyen/moetruyen.wasm",
+              "icon": "https://auzema.github.io/aidoku-moetruyen/icon.png"
+            }
+          ]
+          JSON
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
