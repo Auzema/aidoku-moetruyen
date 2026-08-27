@@ -1,0 +1,11 @@
+[
+  {
+    "id": "moetruyen",
+    "name": "Mòe Truyện",
+    "author": "Auzema",
+    "version": "0.1.0",
+    "language": "vi",
+    "url": "https://raw.githubusercontent.com/Auzema/aidoku-moetruyen/master/public/moetruyen.wasm",
+    "icon": "https://raw.githubusercontent.com/Auzema/aidoku-moetruyen/master/public/icon.png"
+  }
+]
